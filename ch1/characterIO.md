@@ -52,5 +52,5 @@ want to interact with a file, you can compile the file, then type:
 cat <your file> | ./<your program>
 ```
 
-Here `<your file>` is literally a file writen by you (eg: a .txt file). Then
+Here, `<your file>` is literally a file writen by you (eg: a .txt file). Then
 we get what we want.
