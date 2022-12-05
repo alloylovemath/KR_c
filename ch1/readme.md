@@ -139,7 +139,8 @@ the begining of `main`-every program must have a main function.
 	2. `char`-1 byte;
 	3. `int`-4 bytes
 	(So, smallest `int` is -2,147,483,648 ($-2^{31}$) while the biggest `int` is
-	2,147,483,647 $2^{31}-1$, I don't know why 2,147,483,648 is not include
+	2,147,483,647 $2^{31}-1$, (2,147,483,648 possibilities,
+	2,147,483,647 number)
 	yet. And there is one bit for the sign i.e. $\pm$);  
 	**Pay attention to the integer division truncates**
 	4. `float`-4 bytes;
@@ -158,3 +159,90 @@ operation is done
 decimal point, `%6.2f`-at least 6 characters wide, 2 characters after the
 decimal point; And it will round the number i.e. $0.666\dots$ will be 0.67 if
 you use `%.2f`;
+
+### 2temperature.c
+
+- in any context where it is permissible to use the value of a variable of some
+type, you can use a more complicated expression of that type;
+- **For statemenet**:  
+	within the parentheses following the `for`, there are **three parts**:  
+	1. initialization;
+	2. test or condition;
+	3. the increment step (decrement also allowed).
+	**The initialization, condition, and increment can be any expression**, i.e.
+	not only the simple arithmetic operations.
+
+### 3temperature.c
+
+- meaningful number in the program (magic number?) shall be replaced with
+meaningful name-symbolic constant (name);
+- the way to define a symbolic constant: `#define NAME replacement text`,
+**No semicolon at the end of a `#define` line!!!**
+- convention: use uppercase letter with symbolic constants;
+
+### Character Input and Output
+
+General ideas:  
+- text input and output-text stream-streams of characters;
+- lines end with `\n`;
+- `getchar()`-get and **return the next input character**, usually for keyboard
+input;
+- `putchar(c)`-c is usually an `int` not `char`;
+
+#### 4copyFile.c
+
+- `!=`-not equal to, its precedence is higher than `=`;
+- why `int` rather `char`-we need dectect thins like `EOF` whose size is bigger
+than `char`;
+- `EOF`-end of file, a special "character";
+- expressions have value -> assignments can appear at any where variable is
+permitted.
+
+Here, when we are dealing with ex1-6, we might wondering how to get `EOF`. The
+problem is that there is no `EOF` on our keyboard. Fortunately, I found a
+[solution](https://stackoverflow.com/questions/10720821/im-trying-to-understand-getchar-eof) (the answer of Antti Haapala --
+Слава Україні). If you want to trigger `EOF` by keyboard, press `ctrl + D`
+(Unix/Linux) or `ctrl + Z` (Windows). Else if (if-else in real life) you want
+to trigger it by interacting with a file, you should wirte a, say `txt`, file,
+and then type
+```bash
+cat <your file> | ./<your compiled program>
+```
+in the terminal.
+
+#### 5charCount.c
+
+- In the `while` solution part, which has been comment out, notice the `++nc`
+it equals to `nc = nc + 1`. `++` actually can be either prefix or postfix, and
+there are some difference between, we will discuss this in chapter 2;
+- In the `for` part, notice the `;` in a single line. It's a *null statement*.
+
+#### 6lineCount.c
+
+- First, I revise the program, because the original version on KR_C might get
+wrong (consider your file only have 1 line);
+- `if` statement, brace-for multiple statement;
+- `==`-test for equality (`=`-assignment);
+- *character constant*  
+	It turns out, character like `A` is also a "number" in computer. And there
+	are some character set specify the correspondent value of things like `A`.
+	For example, in **ASCII**, `A` is 65, `\n` is 10. You can try to run
+	ascii.c (in folder 6lineCount) for some experience.
+
+#### 7wordCount.c
+
+- Pay attention to how we use `state` in the program;
+- interpretation of `nl = nw = nc = 0;`, its actual form is:  
+	```c
+	nl = (nw = (nc = 0));
+	```
+	remember: expressions (here, the assignments) have value!
+- `||`-OR, `&&`-AND. `&&`'s precedence is higher than `||`;
+- expressions connected by `&&` or `||` are evaluated left to right. For example
+, in
+```c
+c == ' ' || c == '\n' || c == '\t'
+```
+once the compiler knows that c is a blank i.e. `' '`, it won't test the two
+remaining tests;
+- `if-else if-...-(else)` structure.
