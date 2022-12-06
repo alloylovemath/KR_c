@@ -246,3 +246,19 @@ c == ' ' || c == '\n' || c == '\t'
 once the compiler knows that c is a blank i.e. `' '`, it won't test the two
 remaining tests;
 - `if-else if-...-(else)` structure.
+
+### 8array.c
+
+- **array**:  
+	1. `int ndigits[10]`- an array can contain 10 integers, but notice that the
+	index is begin at 0, i.e. the largest index is `ndigits[9]`;
+- [recall](#6linecountc) that `char` is also an integer, this is the reason why
+we can type:
+```c
+(c >= '0' || c <= '9')
+```
+and use `++ndigits[c - '0']`. And this works only if digits (i.e. `0`, `1`,
+..., `9`) have consecutive increasing values, which, fortunately, is true
+for all character sets;
+- `if-else if-...-(else)`, the last `else` can be omitted. In that senario, if
+no condition meets, anything inside the structure won't be excute.
