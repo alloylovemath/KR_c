@@ -169,6 +169,7 @@ type, you can use a more complicated expression of that type;
 	1. initialization;
 	2. test or condition;
 	3. the increment step (decrement also allowed).
+	
 	**The initialization, condition, and increment can be any expression**, i.e.
 	not only the simple arithmetic operations.
 
@@ -262,3 +263,58 @@ and use `++ndigits[c - '0']`. And this works only if digits (i.e. `0`, `1`,
 for all character sets;
 - `if-else if-...-(else)`, the last `else` can be omitted. In that senario, if
 no condition meets, anything inside the structure won't be excute.
+
+### 9intPower.c
+
+**function**:  
+- I know we have learned about function in math classes, but there are some
+minor differences between CS and math about function;
+- In CS, functions provide a convenient way to **encapsulate** some
+computation;
+- ignore **how** a job is done; knowing **what** is done is sufficient;
+- the definition of function:  
+	```c
+	<reture type> <func. name> (<parameter declarations, if any>)
+	{
+		<declarations>
+		<statements>
+	}
+	```
+- Function definitions can appear in any order, and in one source file or
+several;
+- The names used by a function is **local**;
+- **formal argument**-**parameter**, **actual argument**-**argument**;
+- **reture value**:  
+	1. functions need not return a value;
+	2. `return ;`-with no expression cause control, indicates the termination
+	of the function;
+	3. `main` function can also (*better*) return a value to indicate the status
+	to the environment. `0` usually for normal termination, *non-zero* usually
+	for unusual or erroneous termination;
+- declarations before `main` are called **function prototype**, declaration and
+definition and call of function must meet.
+
+### 10intPower.c
+
+- First look at the `for` loop, review [here](#2temperaturec)-**the
+initialization, condition, and increment can be any expression**;
+- All function arguments are passed "by value" i.e. **the called function is
+given the values of its arguments in temporary variables rather than the
+originals**. This means, in C, **the called function cannot directly alter a
+variable in the calling function**. So, in the new `power` function, the `n`
+decrease, while the original `n` outside the function won't change;
+- If we want to change the original value, we must use a technology named
+**pointer**-the address of the variable to be set, details in chapter 5.
+
+### 11longestLine.c
+
+- Exclude *pointer*, there is actually **another to modify the original value-
+using arrays**. When we use a array as an argument, the value passed to the
+function is the **address of the beginning of the array**. By subscripting,
+the function can alter any element of the array.
+- (Maybe) it's better to think about the outline before writing code;
+- `char s[]` or `int number[]`, these are the way to use arrays as parameters
+in a function;
+- `void`-empty;
+- In C, the **strings end with a special character-`'\0'`**;
+- `%s`-placeholder for strings;
