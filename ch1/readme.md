@@ -318,3 +318,25 @@ in a function;
 - `void`-empty;
 - In C, the **strings end with a special character-`'\0'`**;
 - `%s`-placeholder for strings;
+
+### 12externalVar.c
+
+- In preceding programs, the variables inside a function are **local**-they
+comes into existence only when the function called, and disappeared when the
+function exited (known as *automatic variables*);
+- **external** variables can be accessed by any function i.e. they are
+**global**
+- the external variables should be defined outside of any functions, and
+**declared in each function that want to access it**;
+- keyword `extern` can be omitted if their definition occurs in the source file
+before its use in a particular function-so the common practice is to place all
+definitions of external variables at the beginning of the source file;
+- if there are multiple source file, common practice is to collect external
+variables in a separate file (**header**), and add `external` if you use them;
+- **definition** vs. **declaration**:  
+	- definition: create variables and assign storage;
+	- declaration: states and no storage is allocated.
+- the disadvantage of relying too much on external variables:
+	1. make the data connections of programs are not obvious-hard to modify or
+	debug;
+	2. destroy the versatility of the functions.
